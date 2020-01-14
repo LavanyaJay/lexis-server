@@ -16,7 +16,7 @@ export default class LangController {
   }
 
   @Post("/langs")
-  async createUser(@Body() lang: Lang) {
+  async createLang(@Body() lang: Lang) {
     const entity = await Lang.create(lang);
     return entity.save();
   }

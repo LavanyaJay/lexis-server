@@ -18,6 +18,9 @@ export default class FlashCard extends BaseEntity {
   @Column("text")
   meaning: string;
 
-  @ManyToOne(() => Lang)
+  @ManyToOne(
+    () => Lang,
+    lang => lang.flashCards
+  )
   lang: Lang;
 }
