@@ -1,5 +1,5 @@
 import { JsonController, Get, Param, Body, Post } from "routing-controllers";
-
+import Lang from "../lang/entity";
 import FlashCard from "./entity";
 
 @JsonController()
@@ -9,15 +9,20 @@ export default class FlashCardController {
     return FlashCard.findOne(id);
   }
 
-  @Get("/flashcards")
-  async allFlashCards() {
-    const flashCards = await FlashCard.find();
+  @Get("/lang/:id/flashcards")
+  async allFlashCards(@Param("id") langId: number) {
+    const lang = await Lang.findOne(langId);
+    const flashCards = await FlashCard.find({ where: { lang } });
     return { flashcards: flashCards };
   }
 
-  @Post("/flashcards")
-  async createFlashCard(@Body() flashCard: FlashCard) {
-    const entity = await FlashCard.create(flashCard);
+  @Post("/lang/:id/flashcards")
+  async createFlashCard(
+    @Param("id") langId: number,
+    @Body() flashCard: FlashCard
+  ) {
+    const lang = await Lang.findOne(langId);
+    const entity = await FlashCard.create({ ...flashCard, lang });
     return entity.save();
   }
 }
