@@ -1,0 +1,26 @@
+{
+  "name": "flashcardServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx tsc -w",
+    "start": "node .",
+    "postinstall": "tsc -p ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^13.1.6",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.0",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.4.0",
+    "routing-controllers": "^0.8.0",
+    "typescript": "^3.7.4"
+  }
+}
